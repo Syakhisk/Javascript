@@ -34,10 +34,12 @@ Javascript (seperti kodrat nya) bisa dijalankan di browser, untuk file extensi n
 
 ## Browser Console
 Chrome Based - `CTRL+SHIFT+J`
+
 Firefox Based - `CTRL+SHIFT+K`
 
 ## Node.js REPL
 `$ node`
+
 `$ node [filename]`
 
 # First-class function
