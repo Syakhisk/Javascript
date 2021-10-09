@@ -121,7 +121,8 @@ function (){
 const password = function () {
   return "verysecret123andri"
 }
-// panggilnya pake password()
+
+password() // verysecret123andri
 
 ```
 
@@ -133,7 +134,8 @@ const sixninefortwenty = () => "nice" // nice
 // Artinya sama kaya
 const sixninefortwenty = function() {
   return "nice"
-}  // nice
+}  
+sixninefortwenty() // nice
 
 // Atau
 const sebutNamakuTigaKali = (nama) => {
@@ -150,7 +152,7 @@ sebutNamakuTigaKali("andri")
 
 ## Arguments && Parameters
 
-## Rest Parameters - variadic funcitons
+### Rest Parameters - variadic funcitons
 Jadi sebuah function dapat memiliki jumlah variable yang indefinite dengan cara menggunakan triple-dots atau `...`, dimana nanti akan disimpan sebagai array didalam scope function tersebut.
 
 Contoh:
