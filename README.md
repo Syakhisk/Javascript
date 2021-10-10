@@ -4,7 +4,7 @@
 
 ![TOC](https://i.ibb.co/1vPQfZQ/gh-toc.gif)
 
-# Node.js? Maybe later
+# Node.js?
 > Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser. Node.js lets developers use JavaScript to write command line tools and for server-side scripting—running scripts server-side to produce dynamic web page content before the page is sent to the user's web browser. Consequently, Node.js represents a "JavaScript everywhere" paradigm, unifying web-application development around a single programming language, rather than different languages for server-side and client-side scripts. 
 
 **Intinya**, `Node.js` itu bisa membuat script `js` bisa di run selain di browser (CLI, Server, dsb). Sekarang kita gak bakal bahas itu.
@@ -97,12 +97,8 @@ Di javascript, ada 3 cara untuk membuat variable, yaitu pake `var`, `let`, atau 
 > Declares a block-scoped, read-only named constant.
 
 Read more [di sini](https://hackernoon.com/js-var-let-or-const-67e51dbb716f) dan [di situ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types)
-# Objects
-
-// TODO
-
 # Functions
-## Definition
+## Usage
 
 Cara mendeklarasikan function di javascript ini mirip dengan kebanyakan bahasa lain, tapi ada beberapa yang buat unik.
 
@@ -135,7 +131,8 @@ const sixninefortwenty = () => "nice" // nice
 const sixninefortwenty = function() {
   return "nice"
 }  
-sixninefortwenty() // nice
+
+console.log(sixninefortwenty()) // nice
 
 // Atau
 const sebutNamakuTigaKali = (nama) => {
@@ -151,6 +148,16 @@ sebutNamakuTigaKali("andri")
 ```
 
 ## Arguments && Parameters
+### Default value
+Default value dari argument (parameter) akan digunakan apabila argument tersebut tidak diberikan pada saat pemanggilan function.
+
+Contoh:
+```js
+const tambahinDong = (val1, val2 = 0) => val1 + val2;
+
+const x = tambahinDong(99) // 99
+const y = tambahinDong(99, 321) // 420
+```
 
 ### Rest Parameters - variadic funcitons
 Jadi sebuah function dapat memiliki jumlah variable yang indefinite dengan cara menggunakan triple-dots atau `...`, dimana nanti akan disimpan sebagai array didalam scope function tersebut.
@@ -189,6 +196,49 @@ const nilaiku = [6, 5, 3, 7, 1, 0]
 console.log(tambahinDong(nilaiku)) // 22 (gak lulus 😢)
 ```
 
+# Objects
+
+> JavaScript is designed on a simple object-based paradigm. An object is a collection of properties, and a property is an association between a name (or key) and a value. A property's value can be a function, in which case the property is known as a method.
+
+__Intinya__, `object` dalam javascript itu sebuah koleksi yang isinya `key-value` pair. Mungkin di __python__ ini bisa disebut `dictionary`, dan di __php__ disebut `associative array`.
+
+## Usage
+```js
+// definition and assignment
+const mhs = new Object();
+mhs.nama_depan = "Salahudin"
+mhs.nama_belakang = "Salahudin"
+mhs.nrp = "05312140000001"
+mhs.getNama = function () {
+  // pakai template string, diawali pake backtick (`)
+  // bisa akses js expression dengan cara 
+  // pake ${expression}
+  return `${this.nama_depan} ${this.nama_belakang}`
+}
+
+console.log(mhs.getNama()) // Lorem Ipsum
+
+// shorthand
+
+const mhs = {
+  nama_depan: "Lorem",
+  nama_belakang: "Ipsum",
+  nrp: "05312140000001",
+  getNamaArrow: () => `${this.nama_depan} ${this.nama_belakang}`,
+  getNama: function() {
+      return `${this.nama_depan} ${this.nama_belakang}`
+    } 
+}
+
+console.log(mhs.nama_depan) // Lorem
+console.log(mhs["nama_belakang"]) // Ipsum
+console.log(mhs.getNamaArrow()) // undefined undefined
+console.log(mhs.getNama()) // Lorem Ipsum
+```
+
+## Destructuring
+
+
 # Array Methods
 
 // TODO
@@ -201,9 +251,9 @@ console.log(tambahinDong(nilaiku)) // 22 (gak lulus 😢)
 
 // TODO
 
-# Useful Notes
+# Notes
+Feel free to submit an issue if there are any incorrect information in this repository.
 
-// TODO
 
 # References
 https://learnxinyminutes.com/docs/javascript/
