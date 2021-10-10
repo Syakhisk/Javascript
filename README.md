@@ -97,6 +97,7 @@ Di javascript, ada 3 cara untuk membuat variable, yaitu pake `var`, `let`, atau 
 > Declares a block-scoped, read-only named constant.
 
 Read more [di sini](https://hackernoon.com/js-var-let-or-const-67e51dbb716f) dan [di situ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types)
+
 # Functions
 ## Usage
 
@@ -206,8 +207,8 @@ __Intinya__, `object` dalam javascript itu sebuah koleksi yang isinya `key-value
 ```js
 // definition and assignment
 const mhs = new Object();
-mhs.nama_depan = "Salahudin"
-mhs.nama_belakang = "Salahudin"
+mhs.nama_depan = "Lorem"
+mhs.nama_belakang = "Ipsum"
 mhs.nrp = "05312140000001"
 mhs.getNama = function () {
   // pakai template string, diawali pake backtick (`)
@@ -236,30 +237,122 @@ console.log(mhs.getNamaArrow()) // undefined undefined
 console.log(mhs.getNama()) // Lorem Ipsum
 ```
 
-## Destructuring
+# Array
+
+Seperti pada umumnya, array merupakan sebuah object yang mirip seperti list yang biasa kita akses menggunakan index `arr[0], arr[1], etc`. 
+
+Javascript menerapkan __zero-based indexing__ yang artinya index dari array dimulai dari 0. Array di javascript juga tidak memiliki fixed-length, dan tidak mengharuskan semua elemen di dalamnya memiliki tipe data yang sama.
+
+## Usage
+```js
+const arr1 = [] // deklarasi
+const arr2 = [1,2,3] // deklarasi + inisialisasi
+const arr3 = new Array() // menggunakan kelas array
+
+const arr4 = [
+  1, 
+  "dua", 
+  3.0, 
+  {num: 4}, 
+  function(){return 5},
+  () => 6,
+  [7],
+]; // elemen berbeda tipe
+```
+
+## Methods
+
+Methods dari class array ini lumayan banyak, salah satu method yang biasa digunakan itu: `push`, `pop`, `map`, `filter`, `reduce`, `find`, `includes`, `join`, dsb.
+
+Contoh:
+```js
+const arr = [10, 9];
+arr.push(2); // arr = [10, 9, 2] -- menambahkan elemen kedalam array
+
+const val1 = arr.pop(); // val1 = 2, arr = [10, 9] -- mengeluarkan elemen terakhir
+
+const val2 = arr.shift(); // val2 = 10, arr = [9] -- mengeluarkan elemen pertama
+
+// filter dan map akan mereturn array baru tanpa mengubah array asli
+const arr2 = [1,2,3,4,5]
+const genap = arr.filter((num) => num % 2) // genap = [2,4]
+const tambah10 = arr.map((num) => num + 10 ) // tambah10 = [11,12,13,14,15]
+console.log(arr2) // [1,2,3,4,5]
+
+const nama = ["lorem", "ipsum"];
+console.log(nama.join()) // "lorem,ipsum"
+console.log(nama.join(" ")) // "lorem ipsum"
+```
+
+Read more [di sini](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+# Destructuring
+
+> The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+
+__Intinya__, destructuring itu bisa "mengekspos" isi dari sesuatu (object/array) menjadi variable sendiri.
+
+Contoh:
+```js
+// array destructuring, sesuai index
+const nama = ["lorem", "ipsum"]
+const [namaDepan, namaBelakang] = nama
+
+console.log(namaDepan) // "lorem"
+console.log(namaBelakang) // "ipsum"
+
+// object destructuring, sesuai key
+const mhs = {
+  nama = "foobar",
+  password = "verysecret123andri"
+  nrp = "05311940000003"
+}
+
+const {nama, nrp} = mhs;
+
+console.log(nama) // "foobar"
+console.log(nrp) // "05311940000003"
 
 
-# Array Methods
+// rest assignment
+const halo = ["halo", "bandung", "ibu", "kota"]
+const [kata_pertama, ...kata_sisanya] = halo
 
-// TODO
+console.log(kata_pertama) // "halo" -- string
+console.log(kata_sisanya) // ["bandung", "ibu", "kota"] -- array
+```
+
+Read more [di sini](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
 # Equality
 
-// TODO
+Semakin kalian belajar javascript semakin kalian tau seberapa aneh `equality` di dalamnya. Tapi sekarang, intinya yang paling sering bikin bingung itu perbedaan `==` dengan `===`. triple-equal artinya strict-equality dimana tipe data dari value yang dibandingkan harus sama.
 
-# Async - Await
+Contoh:
+```js
+// equality
+console.log(1 == 1) // true
+console.log(1 == "1") // true
+console.log(1 == true) // true
+console.log(0 == false) // true
 
-// TODO
+console.log(1 === 1) // true
+console.log(1 === "1") // false
+console.log(1 === true) // false
+console.log(0 === false) // false
+
+```
 
 # Notes
-Feel free to submit an issue if there are any incorrect information in this repository.
+Feel free to submit an issue if there are any incorrect information here.
 
 
 # References
+https://developer.mozilla.org/en-US/docs/
+
 https://learnxinyminutes.com/docs/javascript/
 
 https://hackernoon.com/js-var-let-or-const-67e51dbb716f
 
 https://en.wikipedia.org/wiki/Node.js
 
-https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function
