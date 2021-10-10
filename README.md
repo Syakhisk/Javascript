@@ -343,6 +343,65 @@ console.log(0 === false) // false
 
 ```
 
+# Bonus
+
+For loop di javascript
+
+```js
+// array
+const arr = [1,3,5,7,9]
+
+// cara umum
+for (let i = 0; i < arr.length; i++){
+  console.log(`Nilai adalah ${arr[i]}`)
+}
+
+// cara for of
+for(let i of arr){
+  console.log(`${i} adalah elemen dalam array`)
+}
+
+// output
+// 1 adalah elemen dalam array
+// 2 adalah elemen dalam array
+// ...
+
+
+// cara for of
+for(let i in arr){
+  console.log(`${i} adalah index dalam array`)
+}
+
+// output
+// 0 adalah index dalam array
+// 1 adalah index dalam array
+// ...
+
+
+// object
+
+const mhs = {
+  nama: "Lorem Ipsum",
+  nrp: "05311940000003",
+  email: "lorem@its.ac.id",
+}
+
+// salah -- mhs is not iterable
+for (let i of mhs){
+  console.log(i)
+}
+
+for (let i in mhs){
+  console.log(i + " dari mhs adalah " + mhs[i])
+}
+
+// output
+// nama dari mhs adalah Lorem Ipsum
+// nrp dari mhs adalah 05311940000003
+// email dari mhs adalah lorem@its.ac.id
+
+```
+
 # Notes
 Feel free to submit an issue if there are any incorrect information here.
 
